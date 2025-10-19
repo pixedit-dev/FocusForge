@@ -1,0 +1,42 @@
+.task-list {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5rem 0;
+    padding: 1rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.405);
+    border-radius: 15px;
+}
+
+.task-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(0, 67, 125);
+}
+
+.task-control {
+    display: flex;
+    margin-block-start: 0.5rem;
+}
+
+.task-control p {
+    flex: 1;
+    color: rgb(86, 86, 86);
+}
+
+.task-control svg {
+    display: inline-block;
+    margin: 0 7px;
+    font-size: 18px;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.task-control svg:hover {
+    transform: scale(1.3);
+    color: rgb(210, 108, 30);
+}
+
+.task-control button {
+    border: none;
+    background-color: unset;
+}

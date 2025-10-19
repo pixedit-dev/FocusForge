@@ -1,0 +1,67 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    margin: 2.5rem 0;
+    padding: 1rem 1.5rem;
+    background-color: rgba(255, 255, 255, 0.405);
+    border-radius: 15px;
+}
+
+.header h2 {
+    font-size: 20px;
+    margin-block-end: 2rem;
+    text-align: center;
+}
+
+.app-name {
+    color: rgb(210, 108, 30);
+}
+
+.inputs {
+    display: flex;
+    justify-content: center;
+}
+
+.title,
+.task {
+    background-color: rgba(210, 108, 30, 0.137);
+    border-radius: 15px;
+    padding: 0.5rem 1rem;
+    margin: 0 5px;
+}
+
+
+.inputs p {
+    margin-inline-start: 5px;
+    font-size: 17px;
+}
+
+.inputs input {
+    border: none;
+    outline: none;
+    padding: 5px 8px;
+    border-radius: 10px;
+    margin-block-start: 8px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.inputs input:focus {
+    background-color: rgba(203, 167, 135, 0.576);
+    transform: scale(1.05);
+}
+
+.header button {
+    border: none;
+    margin-block-start: 15px;
+    padding: 0.5rem 1rem;
+    border-radius: 15px;
+    background-color: rgba(0, 154, 0, 0.854);
+    color: aliceblue;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.header button:hover {
+    background-color: rgba(12, 130, 12, 0.854);
+}
