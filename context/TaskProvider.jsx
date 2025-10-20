@@ -37,9 +37,19 @@ export function TaskProvider({ children }) {
 		);
 	};
 
+	const editTask = (id, updatedTitle, updatedDescription) => {
+		setTasks(
+			tasks.map((task) =>
+				task.id === id
+					? { ...task, title: updatedTitle, description: updatedDescription }
+					: task
+			)
+		);
+	};
+
 	return (
 		<TaskContext.Provider
-			value={{ tasks, addTask, deleteTask, toggleComplete }}>
+			value={{ tasks, addTask, deleteTask, toggleComplete, editTask }}>
 			{children}
 		</TaskContext.Provider>
 	);

@@ -60,6 +60,7 @@
     color: aliceblue;
     font-weight: 600;
     cursor: pointer;
+    outline: none;
 }
 
 .header button:hover {

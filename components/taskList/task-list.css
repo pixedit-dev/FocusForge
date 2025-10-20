@@ -45,7 +45,7 @@
 .completed {
     background-color: rgba(125, 4, 4, 0.405);
     border: 1px solid rgba(255, 0, 0, 0.544);
-    transition: 0.6s all;
+    transition: background 0.6s;
 }
 
 .completed-message {
@@ -57,4 +57,52 @@
     font-size: 20px;
     color: rgb(148, 25, 25);
     transform: translateY(0);
+}
+
+.edit-mode {
+    display: flex;
+    column-gap: 1rem;
+}
+
+.edit-title {
+    text-align: center;
+    margin-block-end: 0.7rem;
+}
+
+.edit-mode input {
+    border: none;
+    outline: none;
+    padding: 4px 8px;
+    border-radius: 10px;
+}
+
+.save-edit-mode {
+    border: none;
+    padding: 5px 10px;
+    border-radius: 15px;
+    background-color: rgb(17, 137, 129);
+    color: aliceblue;
+    cursor: pointer;
+    transition: background 0.4s;
+}
+
+.save-edit-mode:hover {
+    background-color: rgb(14, 114, 108);
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.363);
+}
+
+.cancel-edit-mode {
+    border: none;
+    padding: 5px 10px;
+    border-radius: 15px;
+    background-color: rgb(184, 25, 25);
+    color: aliceblue;
+    cursor: pointer;
+    transition: background 0.4s;
+}
+
+.cancel-edit-mode:hover {
+    background-color: rgb(162, 19, 19);
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.363);
+
 }
