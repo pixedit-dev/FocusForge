@@ -19,8 +19,18 @@ export function TaskProvider({ children }) {
 		setTasks([...tasks, newTask]);
 	}
 
+	function deleteTask(id) {
+		const confirmDelete = window.confirm(
+			"Are you sure you want to delete this task?"
+		);
+
+		if (confirmDelete) {
+			setTasks(tasks.filter((task) => task.id !== id));
+		}
+	}
+
 	return (
-		<TaskContext.Provider value={{ tasks, addTask }}>
+		<TaskContext.Provider value={{ tasks, addTask, deleteTask }}>
 			{children}
 		</TaskContext.Provider>
 	);

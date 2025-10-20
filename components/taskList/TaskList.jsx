@@ -6,7 +6,7 @@ import { IoCheckmarkCircle } from "react-icons/io5";
 import { TaskContext } from "../../context/TaskContext";
 
 export default function TaskList() {
-	const { tasks } = useContext(TaskContext);
+	const { tasks, deleteTask } = useContext(TaskContext);
 
 	return (
 		<div className="tasks-section">
@@ -16,7 +16,7 @@ export default function TaskList() {
 						<p className="task-title">{task.title}</p>
 						<div className="task-control">
 							<p>{task.description}</p>
-							<button>
+							<button onClick={() => deleteTask(task.id)}>
 								<FaTrashAlt />
 							</button>
 							<button>
