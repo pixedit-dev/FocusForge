@@ -29,8 +29,17 @@ export function TaskProvider({ children }) {
 		}
 	}
 
+	const toggleComplete = (id) => {
+		setTasks(
+			tasks.map((task) =>
+				task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
+			)
+		);
+	};
+
 	return (
-		<TaskContext.Provider value={{ tasks, addTask, deleteTask }}>
+		<TaskContext.Provider
+			value={{ tasks, addTask, deleteTask, toggleComplete }}>
 			{children}
 		</TaskContext.Provider>
 	);
