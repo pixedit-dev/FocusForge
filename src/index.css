@@ -10,6 +10,10 @@
 body {
     background: linear-gradient(rgb(221, 218, 195), rgb(210, 162, 136));
     font-family: "Vasirmath", sans-serif;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
 }
 
 ul,
@@ -28,4 +32,69 @@ a {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+}
+
+@media(max-width:500px) {
+    .container {
+        block-size: 100vh;
+
+    }
+
+    .to-do-app {
+        inline-size: 85%;
+        text-align: center;
+        margin-block-start: 1rem;
+    }
+
+    .header {
+        padding: 1rem;
+        inline-size: 100%;
+    }
+
+    .header h2 {
+        font-size: 16px;
+    }
+
+    .inputs {
+        display: block;
+    }
+
+    .task {
+        margin-block-start: 1rem;
+    }
+
+    .inputs input {
+        inline-size: 100%;
+    }
+
+    .task-title,
+    .task-control p {
+        font-size: 16px;
+    }
+
+    .task-control {
+        display: block;
+    }
+
+    .task-control p {
+        margin-block-end: 1rem;
+    }
+
+    .edit-mode {
+        flex-direction: column;
+    }
+
+    .edit-mode button {
+        margin: 3px 0;
+    }
+
+    .edit-mode input {
+        margin-block-end: 1rem;
+    }
+
+    .task-list {
+        padding: 0.5rem 1rem;
+    }
+
 }

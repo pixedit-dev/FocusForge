@@ -41,19 +41,26 @@ export default function TaskList() {
 							<>
 								<h4 className="edit-title">Edit your task</h4>
 								<div className="edit-mode">
-									<input
-										autoFocus
-										type="text"
-										value={editTitle}
-										onChange={(e) => setEditTitle(e.target.value)}
-										placeholder="Edit Title"
-									/>
-									<input
-										type="text"
-										value={editDescription}
-										onChange={(e) => setEditDescription(e.target.value)}
-										placeholder="Edit Description"
-									/>
+									<div>
+										<h4>Edit Title</h4>
+										<input
+											autoFocus
+											type="text"
+											value={editTitle}
+											onChange={(e) => setEditTitle(e.target.value)}
+											placeholder="Edit Title"
+										/>
+									</div>
+									<div>
+										<h4>Edit Description</h4>
+
+										<input
+											type="text"
+											value={editDescription}
+											onChange={(e) => setEditDescription(e.target.value)}
+											placeholder="Edit Description"
+										/>
+									</div>
 									<button
 										onClick={() => handleSaveClick(task.id)}
 										className="save-edit-mode">
@@ -91,7 +98,9 @@ export default function TaskList() {
 					</div>
 				))
 			) : (
-				<p className="task-status">You have added no task yet!</p>
+				<p className="task-status">
+					Your tasks will be shown here. You&apos;ve added no tasks yet!
+				</p>
 			)}
 		</div>
 	);
