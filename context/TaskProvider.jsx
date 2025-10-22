@@ -15,6 +15,12 @@ export function TaskProvider({ children }) {
 			title: taskTitle,
 			description: taskDescription,
 			isCompleted: false,
+			time: {
+				day: "",
+				hour: "",
+				min: "",
+				active: false,
+			},
 		};
 		setTasks([...tasks, newTask]);
 	}

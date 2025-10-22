@@ -17,6 +17,9 @@
 .task-control {
     display: flex;
     margin-block-start: 0.5rem;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 .task-control p {
@@ -27,7 +30,7 @@
 .task-control svg {
     display: inline-block;
     margin: 0 7px;
-    font-size: 18px;
+    font-size: 16px;
     transition: all 0.2s;
     cursor: pointer;
 }
@@ -40,6 +43,16 @@
 .task-control button {
     border: none;
     background-color: unset;
+}
+
+.task-description {
+    max-width: 480px;
+}
+
+.description {
+    white-space: normal;
+    word-break: break-word;
+    padding-right: 5rem;
 }
 
 .completed {
@@ -112,4 +125,13 @@
 
 .edit-mode h4 {
     font-size: 14px;
+}
+
+.time-management-section {
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+.time-management-section input {
+    width: 3rem;
 }

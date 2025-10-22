@@ -79,19 +79,30 @@ export default function TaskList() {
 								{task.isCompleted ? (
 									<p className="completed-message">Task Completed</p>
 								) : null}
-								<div className="task-control">
-									<p>{task.description}</p>
-									<button onClick={() => deleteTask(task.id)}>
-										<FaTrashAlt />
-									</button>
-									{!task.isCompleted && (
-										<button onClick={() => handleEditClick(task)}>
-											<FaEdit />
+								<div className="task-description">
+									<div className="description">
+										<p>{task.description}</p>
+									</div>
+									<div className="task-control">
+										<button
+											onClick={() => deleteTask(task.id)}
+											title="Delete task">
+											<FaTrashAlt />
 										</button>
-									)}
-									<button onClick={() => toggleComplete(task.id)}>
-										<IoCheckmarkCircle />
-									</button>
+										{!task.isCompleted && (
+											<button
+												onClick={() => handleEditClick(task)}
+												title="Edit task">
+												<FaEdit />
+											</button>
+										)}
+										<button
+											onClick={() => toggleComplete(task.id)}
+											title="Mark as completed">
+											<IoCheckmarkCircle />
+										</button>
+									</div>
+									<div className="time-management-section"></div>
 								</div>
 							</>
 						)}
