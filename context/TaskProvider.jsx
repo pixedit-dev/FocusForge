@@ -16,10 +16,10 @@ export function TaskProvider({ children }) {
 			description: taskDescription,
 			isCompleted: false,
 			time: {
-				day: "",
-				hour: "",
-				min: "",
+				hour: 0,
+				min: 0,
 				active: false,
+				targetTime: null,
 			},
 		};
 		setTasks([...tasks, newTask]);
@@ -53,9 +53,57 @@ export function TaskProvider({ children }) {
 		);
 	};
 
+	const setCountdown = (id, hour, min) => {
+		const now = Date.now();
+		const duration = (hour * 60 + min) * 60 * 1000;
+		const targetTime = now + duration;
+
+		setTasks((prevTasks) =>
+			prevTasks.map((task) =>
+				task.id === id
+					? {
+							...task,
+							time: {
+								hour,
+								min,
+								active: true,
+								targetTime,
+							},
+					  }
+					: task
+			)
+		);
+	};
+
+	const resetCountdown = (id) => {
+		setTasks((prevTasks) =>
+			prevTasks.map((task) =>
+				task.id === id
+					? {
+							...task,
+							time: {
+								hour: 0,
+								min: 0,
+								active: false,
+								targetTime: null,
+							},
+					  }
+					: task
+			)
+		);
+	};
+
 	return (
 		<TaskContext.Provider
-			value={{ tasks, addTask, deleteTask, toggleComplete, editTask }}>
+			value={{
+				tasks,
+				addTask,
+				deleteTask,
+				toggleComplete,
+				editTask,
+				setCountdown,
+				resetCountdown,
+			}}>
 			{children}
 		</TaskContext.Provider>
 	);

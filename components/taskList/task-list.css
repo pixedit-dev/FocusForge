@@ -12,14 +12,15 @@
     font-size: 20px;
     font-weight: 600;
     color: rgb(0, 67, 125);
+    margin-block-end: 7px;
 }
 
 .task-control {
     display: flex;
     margin-block-start: 0.5rem;
     position: absolute;
-    right: 0;
-    top: 0;
+    inset-inline-end: 0;
+    inset-block-start: 0;
 }
 
 .task-control p {
@@ -46,13 +47,13 @@
 }
 
 .task-description {
-    max-width: 480px;
+    max-inline-size: 480px;
 }
 
 .description {
     white-space: normal;
     word-break: break-word;
-    padding-right: 5rem;
+    padding-inline-end: 5rem;
 }
 
 .completed {
@@ -127,11 +128,93 @@
     font-size: 14px;
 }
 
-.time-management-section {
-    margin-top: 0.5rem;
-    text-align: center;
+.time-management-control {
+    display: flex;
+    column-gap: 1rem;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: all 0.4s ease;
 }
 
-.time-management-section input {
-    width: 3rem;
+.timer-section-icons {
+    display: flex;
+    align-items: center;
+    justify-self: center;
+    border: none;
+    outline: none;
+    background-color: unset;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.timer-section-oppener {
+    transition: all 0.3s ease;
+}
+
+.timer-section-oppener.rotated {
+    transform: rotate(180deg);
+}
+
+.time-management-control.dropdown-open {
+    max-height: 200px;
+    opacity: 1;
+}
+
+.timer-section-icons:hover .timer-section-oppener {
+    color: rgb(213, 135, 79);
+}
+
+.time-management-inps {
+    display: flex;
+    column-gap: 1rem;
+}
+
+.time-management-inps input {
+    border: none;
+    outline: none;
+    inline-size: 25px;
+    block-size: 25px;
+    padding: 5px;
+    border-radius: 10px;
+    margin-inline-start: 5px;
+}
+
+.timer-btns {
+    display: flex;
+    column-gap: 1rem;
+
+}
+
+.save-timer {
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    display: flex;
+    column-gap: 5px;
+    align-items: center;
+    background-color: rgb(43, 107, 137);
+    color: white;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.save-timer:hover {
+    background-color: rgba(50, 129, 166, 0.9);
+}
+
+.reset-timer {
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background-color: rgb(116, 35, 35);
+    color: white;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.reset-timer:hover {
+    background-color: rgba(157, 47, 47, 0.9);
 }
