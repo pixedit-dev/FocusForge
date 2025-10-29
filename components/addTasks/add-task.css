@@ -9,7 +9,6 @@
 
 .header h2 {
     font-size: 20px;
-    margin-block-end: 2rem;
     text-align: center;
 }
 
@@ -65,4 +64,11 @@
 
 .header button:hover {
     background-color: rgba(12, 130, 12, 0.854);
+}
+
+.welcome-context {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-block-end: 2rem;
 }

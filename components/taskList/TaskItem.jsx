@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
 import TaskEditForm from "./TaskEditForm";
 import TaskDisplay from "./TaskDisplay";
@@ -47,14 +48,15 @@ export default function TaskItem({
 					onToggleComplete={() => toggleComplete(task.id)}
 				/>
 			)}
-
-			<CountdownTimer
-				task={task}
-				isOpen={isOpen}
-				setIsOpen={setIsOpen}
-				setCountdown={setCountdown}
-				resetCountdown={resetCountdown}
-			/>
+			{!task.isCompleted && (
+				<CountdownTimer
+					task={task}
+					isOpen={isOpen}
+					setIsOpen={setIsOpen}
+					setCountdown={setCountdown}
+					resetCountdown={resetCountdown}
+				/>
+			)}
 		</div>
 	);
 }

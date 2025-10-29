@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+import PropTypes from "prop-types";
 import { RxLapTimer } from "react-icons/rx";
 import { FaAngleDown } from "react-icons/fa";
 import { VscSaveAs } from "react-icons/vsc";
@@ -12,6 +14,7 @@ export default function CountdownTimer({
 }) {
 	const [hour, setHour] = useState("");
 	const [min, setMin] = useState("");
+
 	const getRemainingTime = (targetTime) => {
 		const now = Date.now();
 		const diff = targetTime - now;
@@ -83,3 +86,11 @@ export default function CountdownTimer({
 		</div>
 	);
 }
+
+CountdownTimer.PropTypes = {
+	task: PropTypes.bool.isRequired,
+	isOpen: PropTypes.bool.isRequired,
+	setIsOpen: PropTypes.bool.isRequired,
+	setCountdown: PropTypes.bool.isRequired,
+	resetCountdown: PropTypes.bool.isRequired,
+};

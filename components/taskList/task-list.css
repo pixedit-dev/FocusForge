@@ -144,8 +144,9 @@
     border: none;
     outline: none;
     background-color: unset;
-    margin: 0 auto;
+    margin: 5px auto;
     cursor: pointer;
+    font-size: 17px;
 }
 
 .timer-section-oppener {

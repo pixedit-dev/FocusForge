@@ -1,4 +1,5 @@
 import { TaskContext } from "../../context/TaskContext";
+import Clock from "../../utils/clock";
 import "./add-task.css";
 import { useContext, useState } from "react";
 
@@ -18,9 +19,15 @@ const AddTask = () => {
 
 	return (
 		<form className="header" onSubmit={handleSubmit}>
-			<h2>
-				Welcome to <span className="app-name">FocusForge</span>
-			</h2>
+			<div className="welcome-context">
+				<h2>
+					Welcome to <span className="app-name">FocusForge</span>
+				</h2>
+				<div>
+					<Clock />
+				</div>
+			</div>
+
 			<div className="inputs">
 				<div className="title">
 					<p>Title</p>
