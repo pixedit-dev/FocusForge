@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 export default function TaskEditForm({
 	editTitle,
 	editDescription,
@@ -39,3 +41,12 @@ export default function TaskEditForm({
 		</>
 	);
 }
+
+TaskEditForm.propTypes = {
+	editTitle: PropTypes.string.isRequired,
+	editDescription: PropTypes.string.isRequired,
+	setEditTitle: PropTypes.func.isRequired,
+	setEditDescription: PropTypes.func.isRequired,
+	onSave: PropTypes.func.isRequired,
+	onCancel: PropTypes.func.isRequired,
+};

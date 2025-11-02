@@ -1,27 +1,30 @@
-/* eslint-disable react/prop-types */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import TaskEditForm from "./TaskEditForm";
 import TaskDisplay from "./TaskDisplay";
 import CountdownTimer from "./CountdownTimer";
+import { TaskContext } from "../../context/TaskContext";
+import PropTypes from "prop-types";
 
-export default function TaskItem({
-	task,
-	editingTaskId,
-	editTitle,
-	editDescription,
-	setEditTitle,
-	setEditDescription,
-	handleEditClick,
-	handleSaveClick,
-	cancelEditMode,
-	deleteTask,
-	toggleComplete,
-	setCountdown,
-	resetCountdown,
-}) {
-	const [isOpen, setIsOpen] = useState(false);
+TaskItem.propTypes = {
+	task: PropTypes.object.isRequired,
+};
+
+export default function TaskItem({ task }) {
+	const { deleteTask, toggleComplete, setCountdown, resetCountdown, editTask } =
+		useContext(TaskContext);
+
+	// edit
+	const [isEditing, setIsEditing] = useState(false);
+	const [editTitle, setEditTitle] = useState(task.title);
+	const [editDescription, setEditDescription] = useState(task.description);
 	const [, forceUpdate] = useState(0);
 
+	const handleSave = () => {
+		editTask(task.id, editTitle, editDescription);
+		setIsEditing(false);
+	};
+
+	// update countdown timer each second
 	useEffect(() => {
 		const interval = setInterval(() => {
 			forceUpdate((n) => n + 1);
@@ -31,28 +34,27 @@ export default function TaskItem({
 
 	return (
 		<div className={`task-list ${task.isCompleted ? "completed" : ""}`}>
-			{editingTaskId === task.id ? (
+			{isEditing ? (
 				<TaskEditForm
 					editTitle={editTitle}
 					editDescription={editDescription}
 					setEditTitle={setEditTitle}
 					setEditDescription={setEditDescription}
-					onSave={() => handleSaveClick(task.id)}
-					onCancel={cancelEditMode}
+					onSave={handleSave}
+					onCancel={() => setIsEditing(false)}
 				/>
 			) : (
 				<TaskDisplay
 					task={task}
 					onDelete={() => deleteTask(task.id)}
-					onEdit={() => handleEditClick(task)}
+					onEdit={() => setIsEditing(true)}
 					onToggleComplete={() => toggleComplete(task.id)}
 				/>
 			)}
+
 			{!task.isCompleted && (
 				<CountdownTimer
 					task={task}
-					isOpen={isOpen}
-					setIsOpen={setIsOpen}
 					setCountdown={setCountdown}
 					resetCountdown={resetCountdown}
 				/>

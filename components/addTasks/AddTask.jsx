@@ -1,7 +1,7 @@
+import { useContext, useState } from "react";
 import { TaskContext } from "../../context/TaskContext";
 import Clock from "../../utils/clock";
 import "./add-task.css";
-import { useContext, useState } from "react";
 
 const AddTask = () => {
 	const { addTask } = useContext(TaskContext);

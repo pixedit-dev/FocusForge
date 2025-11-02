@@ -132,7 +132,7 @@
     display: flex;
     column-gap: 1rem;
     overflow: hidden;
-    max-height: 0;
+    max-block-size: 0;
     opacity: 0;
     transition: all 0.4s ease;
 }
@@ -158,12 +158,12 @@
 }
 
 .time-management-control.dropdown-open {
-    max-height: 200px;
+    max-block-size: 200px;
     opacity: 1;
 }
 
 .timer-section-icons:hover .timer-section-oppener {
-    color: rgb(213, 135, 79);
+    color: rgb(37, 110, 114);
 }
 
 .time-management-inps {

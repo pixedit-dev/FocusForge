@@ -1,19 +1,21 @@
-/* eslint-disable react/prop-types */
-import PropTypes from "prop-types";
 import { RxLapTimer } from "react-icons/rx";
 import { FaAngleDown } from "react-icons/fa";
 import { VscSaveAs } from "react-icons/vsc";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import PropTypes from "prop-types";
+import { TaskContext } from "../../context/TaskContext";
 
-export default function CountdownTimer({
-	task,
-	isOpen,
-	setIsOpen,
-	setCountdown,
-	resetCountdown,
-}) {
+export default function CountdownTimer({ task }) {
+	const [isOpen, setIsOpen] = useState(false);
 	const [hour, setHour] = useState("");
 	const [min, setMin] = useState("");
+	const { setCountdown, resetCountdown } = useContext(TaskContext);
+	const [, forceUpdate] = useState(0);
+
+	useEffect(() => {
+		const interval = setInterval(() => forceUpdate((n) => n + 1), 1000);
+		return () => clearInterval(interval);
+	}, []);
 
 	const getRemainingTime = (targetTime) => {
 		const now = Date.now();
@@ -23,6 +25,17 @@ export default function CountdownTimer({
 		const minutes = Math.floor(diff / 60000);
 		const seconds = Math.floor((diff % 60000) / 1000);
 		return `${minutes}m ${seconds}s`;
+	};
+
+	const handleSave = () => {
+		if (!hour && !min) return;
+		setCountdown(task.id, Number(hour), Number(min));
+		setHour("");
+		setMin("");
+	};
+
+	const handleReset = () => {
+		resetCountdown(task.id);
 	};
 
 	return (
@@ -51,7 +64,8 @@ export default function CountdownTimer({
 							<input
 								type="text"
 								value={hour}
-								onChange={(e) => setHour(e.target.value)}
+								maxLength="2"
+								onChange={(e) => setHour(e.target.value.replace(/\D/, ""))}
 							/>
 						</div>
 						<div>
@@ -59,38 +73,39 @@ export default function CountdownTimer({
 							<input
 								type="text"
 								value={min}
-								onChange={(e) => setMin(e.target.value)}
+								maxLength="2"
+								onChange={(e) => setMin(e.target.value.replace(/\D/, ""))}
 							/>
 						</div>
 					</div>
 				)}
 
 				<div className="timer-btns">
-					<button
-						className="save-timer"
-						onClick={() => {
-							setCountdown(task.id, Number(hour), Number(min));
-							setHour("");
-							setMin("");
-						}}>
-						<VscSaveAs style={{ marginTop: "2px" }} /> Save
-					</button>
+					{!task.time.active && (
+						<button className="save-timer" onClick={handleSave}>
+							<VscSaveAs style={{ marginTop: "2px" }} /> Save
+						</button>
+					)}
 
-					<button
-						className="reset-timer"
-						onClick={() => resetCountdown(task.id)}>
-						No Time Limits
-					</button>
+					{(task.time.active || task.time.hour > 0 || task.time.min > 0) && (
+						<button className="reset-timer" onClick={handleReset}>
+							Reset
+						</button>
+					)}
 				</div>
 			</div>
 		</div>
 	);
 }
 
-CountdownTimer.PropTypes = {
-	task: PropTypes.bool.isRequired,
-	isOpen: PropTypes.bool.isRequired,
-	setIsOpen: PropTypes.bool.isRequired,
-	setCountdown: PropTypes.bool.isRequired,
-	resetCountdown: PropTypes.bool.isRequired,
+CountdownTimer.propTypes = {
+	task: PropTypes.shape({
+		id: PropTypes.number.isRequired,
+		time: PropTypes.shape({
+			hour: PropTypes.number,
+			min: PropTypes.number,
+			active: PropTypes.bool,
+			targetTime: PropTypes.number,
+		}),
+	}).isRequired,
 };
