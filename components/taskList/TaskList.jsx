@@ -12,7 +12,7 @@ export default function TaskList() {
 				tasks.map((task) => <TaskItem key={task.id} task={task} />)
 			) : (
 				<p className="task-status">
-					Your tasks will be shown here. You&apos;ve added no tasks yet!
+					Your tasks will appear here. You&apos;ve added no tasks yet!
 				</p>
 			)}
 		</div>

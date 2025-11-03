@@ -35,6 +35,9 @@ a {
 
 }
 
+
+
+/* Responsiveness */
 @media(max-width:500px) {
     .container {
         block-size: 100vh;
@@ -102,4 +105,28 @@ a {
         padding: 0.5rem 1rem;
     }
 
+    .save-timer,
+    .reset-timer {
+        padding: 4px 8px;
+        height: fit-content;
+        margin-top: auto;
+    }
+
+    .time-management-control {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: 0.5rem;
+    }
+
+    .countdown-display,
+    .time-management-inps label {
+        font-size: 14px;
+
+    }
+
+    .time-management-inps input {
+        width: 25px;
+        height: 25px;
+    }
 }

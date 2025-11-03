@@ -13,7 +13,7 @@ export default function TaskItem({ task }) {
 	const { deleteTask, toggleComplete, setCountdown, resetCountdown, editTask } =
 		useContext(TaskContext);
 
-	// edit
+	// edit section here
 	const [isEditing, setIsEditing] = useState(false);
 	const [editTitle, setEditTitle] = useState(task.title);
 	const [editDescription, setEditDescription] = useState(task.description);

@@ -1,9 +1,12 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import PropTypes from "prop-types";
 import { TaskContext } from "./TaskContext";
 
 export function TaskProvider({ children }) {
-	const [tasks, setTasks] = useState([]);
+	const [tasks, setTasks] = useState(() => {
+		const stored = localStorage.getItem("tasks");
+		return stored ? JSON.parse(stored) : [];
+	});
 
 	const addTask = useCallback((taskTitle, taskDescription) => {
 		setTasks((prevTasks) => [
@@ -79,6 +82,10 @@ export function TaskProvider({ children }) {
 			)
 		);
 	}, []);
+
+	useEffect(() => {
+		localStorage.setItem("tasks", JSON.stringify(tasks));
+	}, [tasks]);
 
 	const contextValue = {
 		tasks,

@@ -13,6 +13,9 @@
     font-weight: 600;
     color: rgb(0, 67, 125);
     margin-block-end: 7px;
+    white-space: normal;
+    word-break: break-word;
+    padding-inline-end: 5rem;
 }
 
 .task-control {
@@ -194,7 +197,7 @@
     display: flex;
     column-gap: 5px;
     align-items: center;
-    background-color: rgb(43, 107, 137);
+    background-color: rgb(63, 91, 105);
     color: white;
     padding: 4px 8px;
     cursor: pointer;
@@ -202,14 +205,14 @@
 }
 
 .save-timer:hover {
-    background-color: rgba(50, 129, 166, 0.9);
+    background-color: rgba(41, 104, 134, 0.9);
 }
 
 .reset-timer {
     border: none;
     outline: none;
     border-radius: 10px;
-    background-color: rgb(116, 35, 35);
+    background-color: rgb(89, 55, 55);
     color: white;
     padding: 4px 8px;
     cursor: pointer;
@@ -217,5 +220,5 @@
 }
 
 .reset-timer:hover {
-    background-color: rgba(157, 47, 47, 0.9);
+    background-color: rgba(137, 41, 41, 0.9);
 }

@@ -36,6 +36,7 @@ const AddTask = () => {
 						value={title}
 						onChange={(e) => setTitle(e.target.value)}
 						placeholder="Add Title"
+						maxLength={30}
 					/>
 				</div>
 				<div className="task">
