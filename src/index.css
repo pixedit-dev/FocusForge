@@ -27,15 +27,11 @@ a {
 }
 
 .container {
-    display: flex;
+    display: grid;
+    place-items: center;
     block-size: 100vh;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
+    overflow-y: auto;
 }
-
-
 
 /* Responsiveness */
 @media(max-width:500px) {
@@ -108,8 +104,8 @@ a {
     .save-timer,
     .reset-timer {
         padding: 4px 8px;
-        height: fit-content;
-        margin-top: auto;
+        block-size: fit-content;
+        margin-block-start: auto;
     }
 
     .time-management-control {
@@ -122,11 +118,10 @@ a {
     .countdown-display,
     .time-management-inps label {
         font-size: 14px;
-
     }
 
     .time-management-inps input {
-        width: 25px;
-        height: 25px;
+        inline-size: 25px;
+        block-size: 25px;
     }
 }

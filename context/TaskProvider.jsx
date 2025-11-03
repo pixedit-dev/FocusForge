@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { TaskContext } from "./TaskContext";
 
@@ -8,7 +8,7 @@ export function TaskProvider({ children }) {
 		return stored ? JSON.parse(stored) : [];
 	});
 
-	const addTask = useCallback((taskTitle, taskDescription) => {
+	const addTask = (taskTitle, taskDescription) => {
 		setTasks((prevTasks) => [
 			...prevTasks,
 			{
@@ -24,26 +24,26 @@ export function TaskProvider({ children }) {
 				},
 			},
 		]);
-	}, []);
+	};
 
-	const deleteTask = useCallback((id) => {
+	const deleteTask = (id) => {
 		const confirmDelete = window.confirm(
 			"Are you sure you want to delete this task?"
 		);
 		if (confirmDelete) {
 			setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
 		}
-	}, []);
+	};
 
-	const toggleComplete = useCallback((id) => {
+	const toggleComplete = (id) => {
 		setTasks((prevTasks) =>
 			prevTasks.map((task) =>
 				task.id === id ? { ...task, isCompleted: !task.isCompleted } : task
 			)
 		);
-	}, []);
+	};
 
-	const editTask = useCallback((id, updatedTitle, updatedDescription) => {
+	const editTask = (id, updatedTitle, updatedDescription) => {
 		setTasks((prevTasks) =>
 			prevTasks.map((task) =>
 				task.id === id
@@ -51,9 +51,9 @@ export function TaskProvider({ children }) {
 					: task
 			)
 		);
-	}, []);
+	};
 
-	const setCountdown = useCallback((id, hour, min) => {
+	const setCountdown = (id, hour, min) => {
 		const now = Date.now();
 		const duration = (hour * 60 + min) * 60 * 1000;
 		const targetTime = now + duration;
@@ -68,9 +68,9 @@ export function TaskProvider({ children }) {
 					: task
 			)
 		);
-	}, []);
+	};
 
-	const resetCountdown = useCallback((id) => {
+	const resetCountdown = (id) => {
 		setTasks((prevTasks) =>
 			prevTasks.map((task) =>
 				task.id === id
@@ -81,7 +81,7 @@ export function TaskProvider({ children }) {
 					: task
 			)
 		);
-	}, []);
+	};
 
 	useEffect(() => {
 		localStorage.setItem("tasks", JSON.stringify(tasks));
