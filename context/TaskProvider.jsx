@@ -4,6 +4,7 @@ import { TaskContext } from "./TaskContext";
 
 export function TaskProvider({ children }) {
 	const [tasks, setTasks] = useState(() => {
+		// Store Tasks
 		const stored = localStorage.getItem("tasks");
 		return stored ? JSON.parse(stored) : [];
 	});
